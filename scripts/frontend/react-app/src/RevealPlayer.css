@@ -1,0 +1,30 @@
+.reveal-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.video-layer {
+  position: relative;
+  width: 100%;
+  height: 730px; /* Increased height */
+  overflow: hidden;
+}
+
+.reveal-video,
+.pose-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reveal-controls {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
