@@ -4,7 +4,7 @@ import PoseRevealPlayer from './PoseRevealPlayer'; // Make sure the path is corr
 function App() {
   return (
     <div className="App">
-      <PoseRevealPlayer player="Anfernee" />
+      <PoseRevealPlayer player="Dame" />
     </div>
   );
 }
