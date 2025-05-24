@@ -6,8 +6,9 @@ function PoseRevealPlayer({ player, clipNum = 1, steps = 10 }) {
   const videoRef = useRef(null);
   const overlayRef = useRef(null);
 
-  const videoSrc = `/raw_clips/${player}/${player}_${clipNum}.mp4`;
-  const overlaySrc = `/gifs/${player}/${player}_${clipNum}.mp4`;
+  const baseURL = process.env.PUBLIC_URL;
+  const videoSrc = `${baseURL}/raw_clips/${player}/${player}_${clipNum}.mp4`;
+  const overlaySrc = `${baseURL}/gifs/${player}/${player}_${clipNum}.mp4`;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -23,7 +24,6 @@ function PoseRevealPlayer({ player, clipNum = 1, steps = 10 }) {
           console.error("Sync play failed:", err);
         });
 
-        // 🔁 Optional: small resync loop to prevent drift
         const interval = setInterval(() => {
           if (Math.abs(video.currentTime - overlay.currentTime) > 0.1) {
             overlay.currentTime = video.currentTime;
@@ -52,7 +52,6 @@ function PoseRevealPlayer({ player, clipNum = 1, steps = 10 }) {
   return (
     <div className="reveal-container">
       <div className="video-layer">
-        {/* Real video background */}
         <video
           ref={videoRef}
           src={overlaySrc}
@@ -61,8 +60,6 @@ function PoseRevealPlayer({ player, clipNum = 1, steps = 10 }) {
           loop
           playsInline
         />
-
-        {/* Pose overlay video on top, gradually clipped from bottom up */}
         <video
           ref={overlayRef}
           src={videoSrc}
@@ -76,7 +73,6 @@ function PoseRevealPlayer({ player, clipNum = 1, steps = 10 }) {
         />
       </div>
 
-      {/* Controls */}
       <div className="reveal-controls">
         <button onClick={decreaseReveal}>◀ Reveal Less</button>
         <button onClick={increaseReveal}>▶ Reveal More</button>
