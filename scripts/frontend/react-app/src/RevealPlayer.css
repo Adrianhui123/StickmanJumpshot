@@ -28,3 +28,13 @@
   justify-content: center;
   gap: 12px;
 }
+
+.guess-input {
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 80%;
+  font-size: 1rem;
+  text-align: center;
+}
